@@ -1,0 +1,46 @@
+project/
+│
+├── database.py " The code for the database schema
+|
+├── app.py
+│	│
+│	├── /               "dashboard"
+│	├── /charts         "visualization"
+│	├──	/edit          "add- update- delete"
+│	├──	/login
+|	├──	/error
+|	|                   "authontication"
+│	├──	/register 					
+│	├──	/logout 					
+│	├──	/login_required				
+|
+│	
+│
+├── applications.db 
+|	|	
+|	├──	users:						
+|	|		├──	id			
+|	|		├──	username
+|	|		├──	hash
+|	|
+|	├── applications:				
+|			├──	id
+|			├──	user_id
+|			├──	company_name
+|			├──	position
+|			├──	job_type          
+|			├──	status
+|			├──	date_applied
+|
+├── static/
+│   └── style.css
+│
+│
+└── templates/
+    ├── layout.html
+    ├── login.html
+    ├── register.html
+    ├── index.html
+    ├── edit.html
+    ├──	error.html
+    └── charts.html

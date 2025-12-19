@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="top-bar">
+    <header class="main-header">
+        <h1>GET A JOB</h1>
+    </header>
+
+    <nav class="main-nav">
+        {% if session.get("user_id") %}
+            <a href="/">Dashboard</a>
+            <a href="/edit">Edit</a>
+            <a href="/charts">Charts</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </nav>
+</div>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p>© 2025 Job Tracker · Built by Adnan</p>
+
+    <div class="footer-links">
+        <a href="https://github.com/TheBossAdi1" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/adnan-adi-9226b0364/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+        <span class="phone">📞 40 750 637 818</span>
+    </div>
+</footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+# IDE
+.idea/
+
+# Database
+applications.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env

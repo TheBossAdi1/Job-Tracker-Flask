@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Edit Status
+{% endblock %}
+
+{% block content %}
+<h2>Add New Application</h2>
+
+<form method="post">
+    <input type="hidden" name="action" value="add">
+
+    <div>
+        <input type="text" name="company_name" placeholder="Company name" required>
+    </div>
+
+    <div>
+        <input type="text" name="position" placeholder="Position">
+    </div>
+
+    <div>
+        <select name="job_type" required>
+            <option value="">Select job type</option>
+            <option value="Internship">Internship</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Contract">Contract</option>
+        </select>
+    </div>
+
+
+    <div>
+        <select name="status" required>
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Ghosted">Ghosted</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+    </div>
+
+    <button type="submit">Add Application</button>
+</form>
+
+<hr>
+
+
+
+
+
+<h2>Edit Application Status</h2>
+
+{% for app in applications %}
+
+<div style="border:1px solid #ccc; padding:15px; margin-bottom:20px;">
+
+    <p><strong>Company:</strong> {{ app.company_name }}</p>
+    <p><strong>Position:</strong> {{ app.position }}</p>
+    <p><strong>Job Type:</strong> {{ app.job_type }}</p>
+    <p><strong>Date Applied:</strong> {{ app.date_applied }}</p>
+
+    <form method="post">
+        <input type="hidden" name="action" value="update">
+        <input type="hidden" name="app_id" value="{{ app.id }}">
+
+        <label>Status:</label>
+        <select name="status" required>
+            <option value="Applied" {% if app.status == "Applied" %}selected{% endif %}>Applied</option>
+            <option value="Interview" {% if app.status == "Interview" %}selected{% endif %}>Interview</option>
+            <option value="Ghosted" {% if app.status == "Ghosted" %}selected{% endif %}>Ghosted</option>
+            <option value="Accepted" {% if app.status == "Accepted" %}selected{% endif %}>Accepted</option>
+            <option value="Rejected" {% if app.status == "Rejected" %}selected{% endif %}>Rejected</option>
+        </select>
+
+        <button type="submit">Update Status</button>
+    </form>
+
+    <form method="post" style="margin-top:10px;">
+        <input type="hidden" name="action" value="delete">
+        <input type="hidden" name="app_id" value="{{ app.id }}">
+        <button type="submit">Delete Application</button>
+    </form>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
+

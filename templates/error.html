@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Error
+{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <h1>{{ message }}</h1>
+    <p>Error {{ code }}</p>
+</div>
+{% endblock %}

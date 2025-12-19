@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+<h2>Your Dashboard</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Company</th>
+            <th>Position</th>
+            <th>Job Type</th>
+            <th>Status</th>
+            <th>Date Applied</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.company_name }}</td>
+            <td>{{ application.position }}</td>
+            <td>{{ application.job_type }}</td>
+            <td>
+                <span class="badge status-{{ application.status }}">
+                    {{ application.status }}
+                </span>
+            </td>
+            <td>{{ application.date_applied }}</td>
+            <td>
+                <a href="/edit">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
